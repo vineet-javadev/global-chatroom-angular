@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { ChatService } from '../chat.service';
+import { flag , username } from '../../../global';
 
 @Component({
   selector: 'app-room',
@@ -51,6 +52,8 @@ export class RoomComponent implements OnInit, AfterViewInit, AfterViewChecked {
       let dataFromDB = localStorage.getItem('globalCR');
       if (dataFromDB) {
         this.user = JSON.parse(dataFromDB).name;
+        flag.set(true);
+        username.set(this.user);
       }
     }
     this.chatService.getMessages().subscribe(data => this.messages$.next(data));
