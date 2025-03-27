@@ -1,0 +1,26 @@
+<section class="w-screen h-full flex justify-center p-3">
+    <div class="bg-gray-950/40 flex flex-col gap-3 rounded-lg w-full lg:w-[70%] p-1 ">
+        <!-- content -->
+         <div #scrollContainer class="w-full h-full px-2 text-white font-mono overflow-y-auto">
+            <ng-container *ngFor="let item of messages$ | async; let i = index">
+                <div class="flex items-center rounded-lg"
+                [ngClass]="{'justify-end': item.user === user, 'justify-start': item.user !== user && item.user !== 'system' , 'justify-center': item.user === 'system' }">
+                @if (item.user === user) {
+                    <h1 class="bg-emerald-700 text-right lg:max-w-6/12 mb-1 lg:mb-[1px] rounded-lg p-1 px-2"> {{item.message}} <span class="font-bold">: You</span></h1> 
+                }@else if (item.user === 'system') {
+                    <h1 class="bg-slate-700 text-center lg:max-w-6/12 mb-1 lg:mb-[1px] rounded-lg p-1 px-2"> {{item.message}} </h1> 
+                }
+                @else{
+                    <h1 class="bg-fuchsia-600 text-left lg:max-w-6/12 mb-1 lg:mb-[1px] rounded-lg p-1 px-2"> <span class="font-bold">{{item.user}} :</span> {{item.message}}</h1>
+                }
+                </div>
+            </ng-container>
+         </div>
+
+        <!-- Input section -->
+         <div class="w-full flex gap-2 justify-center ">
+            <input [(ngModel)]="message" (keydown)="handleKeyPressForSendMessage($event)" type="text" class="w-[80%] py-3 px-5 rounded-full bg-white " placeholder="Enter your Message here....">
+            <button (click)="handleSendMessage()" class="bg-white py-3 px-8 rounded-lg font-mono font-bold cursor-pointer">Send</button>
+         </div>
+    </div>
+</section>
