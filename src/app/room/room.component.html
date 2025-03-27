@@ -6,12 +6,12 @@
                 <div class="flex items-center rounded-lg"
                 [ngClass]="{'justify-end': item.user === user, 'justify-start': item.user !== user && item.user !== 'system' , 'justify-center': item.user === 'system' }">
                 @if (item.user === user) {
-                    <h1 class="bg-emerald-700 text-right lg:max-w-6/12 mb-1 lg:mb-[1px] rounded-lg p-1 px-2"> {{item.message}} <span class="font-bold">: You</span></h1> 
+                    <h1 class="bg-emerald-700 text-right lg:max-w-6/12 mb-1 rounded-lg p-1 px-2"> {{item.message}} <span class="font-bold">: You</span></h1> 
                 }@else if (item.user === 'system') {
-                    <h1 class="bg-slate-700 text-center lg:max-w-6/12 mb-1 lg:mb-[1px] rounded-lg p-1 px-2"> {{item.message}} </h1> 
+                    <h1 class="bg-slate-700 text-center lg:max-w-6/12 mb-1 rounded-lg p-1 px-2"> {{item.message}} </h1> 
                 }
                 @else{
-                    <h1 class="bg-fuchsia-600 text-left lg:max-w-6/12 mb-1 lg:mb-[1px] rounded-lg p-1 px-2"> <span class="font-bold">{{item.user}} :</span> {{item.message}}</h1>
+                    <h1 class="bg-fuchsia-600 text-left lg:max-w-6/12 mb-1 rounded-lg p-1 px-2"> <span class="font-bold">{{item.user}} :</span> {{item.message}}</h1>
                 }
                 </div>
             </ng-container>
